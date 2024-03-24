@@ -15,4 +15,20 @@ describe('Swiper Gallery Test', function () {
     cy.wait(2000);
     cy.get('.swiper-slide-active').should('contain', 'Paris');
   });
+
+  it('Checks if countries are correct for every slide', function () {
+    cy.visit('http://localhost:3000');
+    cy.get('.card-description p').should('contain', 'Italy');
+    cy.get('.card-description h1').should('contain', 'Rome');
+    cy.get('.swiper-button-next').click();
+    cy.wait(2000);
+    cy.get('.card-description p').should('contain', 'United Kingdom');
+    cy.get('.card-description h1').should('contain', 'London');
+    cy.get('.swiper-button-next').click();
+    cy.wait(2000);
+    cy.get('.card-description p').should('contain', 'France');
+    cy.get('.card-description h1').should('contain', 'Paris');
+    cy.get('.swiper-button-next').click();
+    cy.wait(2000);
+  });
 });
